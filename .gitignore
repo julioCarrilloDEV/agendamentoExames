@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 #Arquivo contendo os dados do projeto
-dados.txt
+./model/dados.txt
