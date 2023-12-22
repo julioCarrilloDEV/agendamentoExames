@@ -25,5 +25,4 @@ const Consultas = db.Sequelize.define('consultas', {
         type: db.Sequelize.INTEGER
     }
 })
-
 module.exports = Consultas
