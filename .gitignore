@@ -1,3 +1,5 @@
+model/dados.txt
+
 # Logs
 logs
 *.log
@@ -129,5 +131,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-#Arquivo contendo os dados do projeto
-./model/dados.txt
+
