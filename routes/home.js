@@ -1,8 +1,17 @@
 let express = require('express');
 //método do express de rota
 let router = express.Router()
+let find = require('../controller/find');
+let create = require('../controller/create');
+let remove = require('../controller/remove');
+let update = require('../controller/update');
 
 //rota
+router.get('/', find)
+router.post('/', create)
+router.delete('/:id', remove)
+router.put('/:id', update)
+
 router.get('/', (req, res) =>{
     res.render('home', {
         message: "hellow"
@@ -15,7 +24,7 @@ router.get('/requests/:name', (req, res) =>{
     console.log(req.params.name)
 })
 
-router.post('/body', (req, res) => {
+router.post('/', (req, res) => {
     res.json(req.body)
 })
 //exporta o módulo

@@ -6,7 +6,8 @@ const app = express ()
 const bodyParser = require('body-parser');
 //const methodOverride = require('method-override')
 const home = require('./routes/home')
-const port = 3000;
+const port = 4000;
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
