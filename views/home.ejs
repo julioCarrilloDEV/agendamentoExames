@@ -6,8 +6,8 @@
         <title>Agendamento de exames</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/style.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <div class="container mt-2 px-5">
@@ -74,26 +74,28 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>João Silva</td>
-                    <td>2024-01-01</td>
-                    <td>Unimed</td>
-                    <td>Endoscopia</td>
-                    <td>2024-01-15</td>
-                    <td>Agendado</td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-sm icones" data-bs-toggle="modal" data-bs-target="#visualizarModal">
-                            <i class="bi bi-eye"></i>
-                        </button>
-                        <button type="button" class="btn btn-warning btn-sm icones" data-bs-toggle="modal" data-bs-target="#editarModal">
-                           <i class="bi bi-pencil"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm icones" data-bs-toggle="modal" data-bs-target="#deletarModal">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
+                <% consultas.forEach(consulta => { %>
+                    <tr>
+                        <td><%= consulta.id %></td>
+                        <td><%= consulta.nomePaciente %></td>
+                        <td><%= consulta.dataAbertura %></td>
+                        <td><%= consulta.convenio %></td>
+                        <td><%= consulta.tipoExame %></td>
+                        <td><%= consulta.dataExame %></td>
+                        <td><%= consulta.status %></td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm icones" data-bs-toggle="modal" data-bs-target="#visualizarModal">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button type="button" class="btn btn-warning btn-sm icones" data-bs-toggle="modal" data-bs-target="#editarModal">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm icones" data-bs-toggle="modal" data-bs-target="#deletarModal">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <% }); %>
             </tbody>
         </table>
 

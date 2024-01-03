@@ -6,9 +6,13 @@ const app = express ()
 const bodyParser = require('body-parser');
 //const methodOverride = require('method-override')
 const home = require('./routes/home')
+// const moment = require('moment')
 const port = 4000;
+
 app.set('views', path.join(__dirname, 'views'));
 
+// require('moment/locale/pt-br');
+// moment.locale('pt-br');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');

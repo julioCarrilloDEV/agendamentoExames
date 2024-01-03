@@ -9,12 +9,12 @@ module.exports = (req, res) => {
     Consultas
         .findAll()
         .then((consultas) => {
-            console.log(consultas)
-            // return res.render('home', {
-            //     title: "Lista de Exames",
-            //     consultas: consultas, //variável contendo todos os registros contidos no objeto consultas
-            //     msg: req.query.msg
-            // })
+            
+            return res.render('home', {
+                title: "Lista de Exames",
+                consultas: consultas, //variável contendo todos os registros contidos no objeto consultas
+                msg: req.query.msg
+            })
         })
         .catch((err) => {
             console.error('erro: ', err)
