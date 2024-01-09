@@ -99,27 +99,67 @@
             </tbody>
         </table>
 
-                <!-- Modal de visualização com ID "visualizarModal" -->
-        
-        <div class="modal fade" id="visualizarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Teste do modal! Biri biri biriiiiiiiiii</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                  <button type="button" class="btn btn-primary">Salvar mudanças</button>
-                </div>
-              </div>
+        <div class="row mt-3">
+            <div class="col text-end">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#novoCadastro">
+                    <i class="bi bi-plus"></i>Adicionar Novo Cadastro
+                </button>
             </div>
-          </div>
+        </div>
+                <!-- Modal de visualização com ID "visualizarModal" -->
+        <div class="modal fade" id="novoCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Novo Cadastro</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulário para novo cadastro -->
+                        <form action="/" method="post">
+                            <!-- Campos do formulário -->
+                            <div class="mb-3">
+                                <label for="nomePaciente" class="form-label">Nome do Paciente</label>
+                                <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dataAbertura" class="form-label">Data da Abertura</label>
+                                <input type="text" class="form-control" id="dataAbertura" name="dataAbertura" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="convenio" class="form-label">Convênio</label>
+                                <input type="text" class="form-control" id="convenio" name="convenio" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tipoExame" class="form-label">Tipo de Exame</label>
+                                <input type="text" class="form-control" id="tipoExame" name="tipoExame" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dataExame" class="form-label">Data do Exame</label>
+                                <input type="text" class="form-control" id="dataExame" name="dataExame" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="numGuia" class="form-label">Número da Guia</label>
+                                <input type="text" class="form-control" id="numGuia" name="numGuia" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <input type="text" class="form-control" id="status" name="status" required>
+                            </div>
+        
+                            <!-- Botões do formulário -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>       
+        
 
 
     </div>
