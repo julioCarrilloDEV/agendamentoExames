@@ -8,10 +8,10 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <div class="container mt-2 px-5">
-
+    </head>
+    <body>
+        <div class="container mt-2 px-5">
+            
         <nav class="nav align-items-center justify-content-between bg-dark">
             <div class="nav-item align-self-center dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,9 +29,9 @@
             </div>
         </nav>
 
-
-         <!-- Tabela com Dias da Semana -->
-         <table class="table">
+        
+        <!-- Tabela com Dias da Semana -->
+        <table class="table">
             <tr>
                 <td class="bg-secondary text-white text-center">SEG<br>27/12</td>
                 <td class="bg-secondary text-white text-center">TER<br>28/12</td>
@@ -49,7 +49,7 @@
                 <!-- ... -->
             </tr>
         </table>
-
+        
         <div class="row mt-3 align-items-center ">
             <div class="col">
                 <p class="mb-0 align-self-center linha1">Lista de Exames</p>
@@ -59,7 +59,7 @@
                 <input type="text" class="form-control align-self-center" placeholder="Digite aqui...">
             </div>
         </div>
-       
+        
         <table class="table table-striped mt-5 text-center">
             <thead class="table-dark">
                 <tr>
@@ -87,7 +87,7 @@
                             <button type="button" class="btn btn-primary btn-sm icones" data-bs-toggle="modal" data-bs-target="#visualizarModal">
                                 <i class="bi bi-eye"></i>
                             </button>
-                            <button type="button" class="btn btn-warning btn-sm icones" data-bs-toggle="modal" data-bs-target="#editarModal">
+                            <button type="button" class="btn btn-warning btn-sm icones" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="abrirModalEdicao('<%= JSON.stringify(consulta) %>')">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger btn-sm icones" data-bs-toggle="modal" data-bs-target="#deletarModal">
@@ -95,76 +95,127 @@
                             </button>
                         </td>
                     </tr>
-                <% }); %>
-            </tbody>
-        </table>
-
-        <div class="row mt-3">
-            <div class="col text-end">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#novoCadastro">
-                    <i class="bi bi-plus"></i>Adicionar Novo Cadastro
-                </button>
+                    <% }); %>
+                </tbody>
+            </table>
+            
+            <div class="row mt-3">
+                <div class="col text-end">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#novoCadastro">
+                        <i class="bi bi-plus"></i>Adicionar Novo Cadastro
+                    </button>
+                </div>
             </div>
-        </div>
-                <!-- Modal de visualização com ID "visualizarModal" -->
-        <div class="modal fade" id="novoCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Novo Cadastro</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+            <div class="modal fade" id="novoCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Novo Cadastro</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Formulário para novo cadastro -->
+                            <form action="/" method="post">
+                                <!-- Campos do formulário -->
+                                <div class="mb-3">
+                                    <label for="nomePaciente" class="form-label">Nome do Paciente</label>
+                                    <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dataAbertura" class="form-label">Data da Abertura</label>
+                                    <input type="text" class="form-control" id="dataAbertura" name="dataAbertura" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="convenio" class="form-label">Convênio</label>
+                                    <input type="text" class="form-control" id="convenio" name="convenio" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tipoExame" class="form-label">Tipo de Exame</label>
+                                    <input type="text" class="form-control" id="tipoExame" name="tipoExame" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dataExame" class="form-label">Data do Exame</label>
+                                    <input type="text" class="form-control" id="dataExame" name="dataExame" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="numGuia" class="form-label">Número da Guia</label>
+                                    <input type="text" class="form-control" id="numGuia" name="numGuia" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <input type="text" class="form-control" id="status" name="status" required>
+                                </div>
+                                
+                                <!-- Botões do formulário -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <!-- Formulário para novo cadastro -->
-                        <form action="/" method="post">
-                            <!-- Campos do formulário -->
-                            <div class="mb-3">
-                                <label for="nomePaciente" class="form-label">Nome do Paciente</label>
-                                <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="dataAbertura" class="form-label">Data da Abertura</label>
-                                <input type="text" class="form-control" id="dataAbertura" name="dataAbertura" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="convenio" class="form-label">Convênio</label>
-                                <input type="text" class="form-control" id="convenio" name="convenio" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tipoExame" class="form-label">Tipo de Exame</label>
-                                <input type="text" class="form-control" id="tipoExame" name="tipoExame" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="dataExame" class="form-label">Data do Exame</label>
-                                <input type="text" class="form-control" id="dataExame" name="dataExame" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="numGuia" class="form-label">Número da Guia</label>
-                                <input type="text" class="form-control" id="numGuia" name="numGuia" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="status" class="form-label">Status</label>
-                                <input type="text" class="form-control" id="status" name="status" required>
-                            </div>
-        
-                            <!-- Botões do formulário -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-                            </div>
-                        </form>
+                </div>
+            </div>       
+            <!-- Modal de atualização dos dados -->
+            <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editarModalLabel">Editar Consulta</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Formulário de Edição -->
+                            <form id="formularioEdicao" method="PUT">
+                                <!-- Campos do formulário -->
+                                <div class="mb-3">
+                                    <label for="nomePaciente" class="form-label">Nome do Paciente:</label>
+                                    <input type="text" class="form-control" id="nomePacienteEdit" name="nomePaciente" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dataAbertura" class="form-label">Data da Abertura</label>
+                                    <input type="text" class="form-control" id="dataAberturaEdit" name="dataAbertura" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="convenio" class="form-label">Convênio</label>
+                                    <input type="text" class="form-control" id="convenioEdit" name="convenio" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tipoExame" class="form-label">Tipo de Exame</label>
+                                    <input type="text" class="form-control" id="tipoExameEdit" name="tipoExame" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dataExame" class="form-label">Data do Exame</label>
+                                    <input type="text" class="form-control" id="dataExameEdit" name="dataExame" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="numGuia" class="form-label">Número da Guia</label>
+                                    <input type="text" class="form-control" id="numGuiaEdit" name="numGuia" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <input type="text" class="form-control" id="statusEdit" name="status" required>
+                                </div>
+                                <!-- Campo Oculto para Armazenar o ID da Consulta -->
+                                <input type="hidden" id="idEdit" name="id">
+                                <!-- Botão de Envio -->
+                                <button type="submit" class="btn btn-primary" onclick="construirURL()">Salvar Alterações</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>       
+            
+            
+            
+        </div>
         
-
-
-    </div>
-    
-    
-    
-</body>
-</html>
+        
+        
+        <script src="/js/logica.js"></script>
+    </body>
+    </html>
