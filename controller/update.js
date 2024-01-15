@@ -14,7 +14,9 @@ module.exports = (req, res) => {
         })
         .then(() => {
             console.log("Update ok");
-            res.redirect('/');
+            
+            // Responder com um JSON indicando sucesso
+            res.json({ success: true });
         })
         .catch(error => {
             console.error("Erro ao atualizar:", error);

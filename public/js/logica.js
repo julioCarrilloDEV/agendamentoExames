@@ -57,7 +57,14 @@ function enviarEdicao() {
     .then(response => response.json())
     .then(data => {
         console.log('Sucesso:', data);
-        // Adicione aqui qualquer lógica adicional após a edição bem-sucedida
+
+        // Fechar o modal
+        var editarModal = new bootstrap.Modal(document.getElementById('editarModal'));
+        editarModal.hide();
+
+        // Recarregar a página
+        window.location.reload(true);  // O true serve para forçar o recarregamento do cache
+
     })
     .catch(error => {
         console.error('Erro:', error);
