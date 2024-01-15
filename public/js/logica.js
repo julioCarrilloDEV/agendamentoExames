@@ -30,13 +30,36 @@ function fecharModal(modalId) {
     modal.hide();
 }
 
-function construirURL() {
+function enviarEdicao() {
+    // Obtenha os dados do formulário
+    var formData = new FormData(document.getElementById('formularioEdicao'));
+
+    // Converta FormData para um objeto JSON
+    var jsonData = {};
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
+
     // Obtenha o valor do campo oculto idEdit
     var consultaId = document.getElementById('idEdit').value;
 
     // Construa a URL com base no ID da consulta
-    var url = '/' + consultaId + '/editar';
+    var url = '/editar/' + consultaId;
 
-    // Defina a ação do formulário como a URL construída
-    document.getElementById('formularioEdicao').action = url;
+    // Enviar uma requisição PUT usando AJAX
+    fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json' // Indique que estamos enviando JSON
+        },
+        body: JSON.stringify(jsonData) // Converta o objeto JSON para uma string JSON
+   })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Sucesso:', data);
+        // Adicione aqui qualquer lógica adicional após a edição bem-sucedida
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
 }

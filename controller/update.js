@@ -7,8 +7,6 @@ const { error } = require('console');
 
 module.exports = (req, res) => {
     Consultas
-        //Verificar se os dados do corpo da solicitação estão sendo recebidos corretamente
-        console.log(req.body)
         .update(req.body, {
             where: {
                 id: req.params.id
@@ -16,7 +14,7 @@ module.exports = (req, res) => {
         })
         .then(() => {
             console.log("Update ok");
-            res.reditect('/');
+            res.redirect('/');
         })
         .catch(error => {
             console.error("Erro ao atualizar:", error);

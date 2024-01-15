@@ -10,7 +10,7 @@ let update = require('../controller/update');
 router.get('/', find)
 router.post('/', create)
 router.delete('/:id', remove)
-router.put('/:id/editar', update)
+router.put('/editar/:id', update)
 
 router.get('/', (req, res) =>{
     res.render('home', {
