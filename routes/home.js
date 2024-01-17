@@ -24,8 +24,8 @@ router.get('/requests/:name', (req, res) =>{
     console.log(req.params.name)
 })
 
-router.post('/', (req, res) => {
-    res.json(req.body)
-})
+// router.post('/', (req, res) => {
+//     res.json(req.body)
+// })
 //exporta o módulo
 module.exports = router

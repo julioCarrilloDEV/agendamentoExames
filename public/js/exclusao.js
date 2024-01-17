@@ -20,16 +20,17 @@ function excluirConsulta(consultaId) {
     .then(response => response.json())
     .then(data => {
         console.log('Consulta excluída:', data);
-        
     })
     .catch(error => {
         console.error('Erro ao excluir consulta:', error);
     });
 }
 
-// Adicione um listener para o evento hidden.bs.modal
-var confirmarExclusaoModal = document.getElementById('confirmarExclusaoModal');
-confirmarExclusaoModal.addEventListener('hidden.bs.modal', function () {
+function confirmarExclusao() {
+    // Fechar o modal após a confirmação
+    var confirmarExclusaoModal = new bootstrap.Modal(document.getElementById('confirmarExclusaoModal'));
+    confirmarExclusaoModal.hide();
+
     // Recarregar a página após o modal ser fechado
     window.location.reload(true);
-});
+}

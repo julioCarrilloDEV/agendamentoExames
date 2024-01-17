@@ -151,7 +151,7 @@
                                 <!-- Botões do formulário -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                    <button type="submit" class="btn btn-primary" onclick="enviarFormulario()">Salvar</button>
                                 </div>
                             </form>
                         </div>
@@ -226,7 +226,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-danger" id="confirmarExclusaoBtn">Confirmar</button>
+                            <button type="button" class="btn btn-danger" id="confirmarExclusaoBtn" onclick="confirmarExclusao()">Confirmar</button>
                         </div>
                     </div>
                 </div>
@@ -237,6 +237,7 @@
         
         
         <script src="/js/exclusao.js"></script>
+        <script src="/js/criacao.js"></script>
         <script src="/js/logica.js"></script>
     </body>
     </html>
