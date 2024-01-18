@@ -87,7 +87,7 @@
                             <button type="button" class="btn btn-primary btn-sm icones" data-bs-toggle="modal" data-bs-target="#visualizarModal">
                                 <i class="bi bi-eye"></i>
                             </button>
-                            <button type="button" class="btn btn-warning btn-sm icones" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="abrirModalEdicao('<%= JSON.stringify(consulta) %>')">
+                            <button type="button" class="btn btn-warning btn-sm icones" onclick="abrirModalEdicao('<%= JSON.stringify(consulta) %>')">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger btn-sm icones" data-bs-toggle="modal" data-bs-target="#confirmarExclusaoModal" onclick="prepararExclusao('<%= consulta.id %>')">
@@ -117,7 +117,7 @@
                         </div>
                         <div class="modal-body">
                             <!-- Formulário para novo cadastro -->
-                            <form action="/" method="post">
+                            <form method="POST" id="formularioAdd">
                                 <!-- Campos do formulário -->
                                 <div class="mb-3">
                                     <label for="nomePaciente" class="form-label">Nome do Paciente</label>
@@ -151,7 +151,7 @@
                                 <!-- Botões do formulário -->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <button type="submit" class="btn btn-primary" onclick="enviarFormulario()">Salvar</button>
+                                    <button type="submit" class="btn btn-primary" onclick="enviarFormularioAdd()">Salvar</button>
                                 </div>
                             </form>
                         </div>
@@ -164,7 +164,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="editarModalLabel">Editar Consulta</h5>
-                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                            <button type="button" class="close" data-bs-dismiss="modal" onclick="fecharModal('editarModal')" aria-label="Fechar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
