@@ -5,8 +5,9 @@ const express = require('express');
 const app = express ()
 const bodyParser = require('body-parser');
 //const methodOverride = require('method-override')
+var moment = require('moment')
+app.locals.moment = moment;
 const home = require('./routes/home')
-// const moment = require('moment')
 const port = 4000;
 
 app.set('views', path.join(__dirname, 'views'));

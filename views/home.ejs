@@ -30,25 +30,12 @@
         </nav>
 
         
-        <!-- Tabela com Dias da Semana -->
-        <table class="table">
-            <tr>
-                <td class="bg-secondary text-white text-center">SEG<br>27/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <td class="bg-secondary text-white text-center">TER<br>28/12</td>
-                <!-- Repita para os outros dias da semana -->
-                <!-- ... -->
+        <table class="table" id="tabelaDinamica">
+            <tr id="linhaDiasSemana">
+                <!-- Os dias da semana serão adicionados aqui dinamicamente -->
             </tr>
         </table>
+        
         
         <div class="row mt-3 align-items-center ">
             <div class="col">
@@ -234,10 +221,11 @@
             
             
         </div>
-        
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
         <script src="/js/exclusao.js"></script>
         <script src="/js/criacao.js"></script>
         <script src="/js/logica.js"></script>
+        <script src="/js/tabelaDatas.js"></script>
+       
     </body>
     </html>
