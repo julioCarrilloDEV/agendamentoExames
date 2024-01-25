@@ -5,12 +5,14 @@ let find = require('../controller/find');
 let create = require('../controller/create');
 let remove = require('../controller/remove');
 let update = require('../controller/update');
+let filter = require('../controller/filter');
 
 //rota
 router.get('/', find)
 router.post('/', create)
 router.delete('/:id', remove)
 router.put('/editar/:id', update)
+router.get('/consultas/:data', filter)
 
 router.get('/', (req, res) =>{
     res.render('home', {
@@ -18,6 +20,7 @@ router.get('/', (req, res) =>{
     }); //procura o que eu especifiquei no diretório de views
 
 })
+
 //:name (parametro)
 router.get('/requests/:name', (req, res) =>{
     //req.params captura os parametros enviados. 

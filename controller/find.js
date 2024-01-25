@@ -3,7 +3,7 @@ let sequelize = require('../model/index')
 const path = require('path');
 const Sequelize = require('sequelize');
 const Consultas = require('../model/consultas')
-//let Consultas = require(path.join(__dirname, '../model/consultas'))(sequelize, Sequelize.DataTypes)
+
 
 module.exports = (req, res) => {
     Consultas

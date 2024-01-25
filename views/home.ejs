@@ -23,7 +23,7 @@
                     <a class="dropdown-item" href="#">Alguma coisa aqui</a>
                 </div>
             </div>
-            <div class="nav-item align-self-center text-white" id="ag">Agendamento de Exames: ${Tomografia}</div>
+            <div class="nav-item align-self-center text-white" id="ag">Agendamento de Exames: Tomografia</div>
             <div class="nav-item align-self-center">              
                 <img src="/img/logo2.png" alt="Logo do hospital unimed de lins">
             </div>
@@ -60,15 +60,15 @@
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tabelaConsultas">
                 <% consultas.forEach(consulta => { %>
-                    <tr>
+                    <tr id="<%= consulta.id %>">
                         <td><%= consulta.id %></td>
                         <td><%= consulta.nomePaciente %></td>
-                        <td><%= consulta.dataAbertura %></td>
+                        <td><%= moment(consulta.dataAbertura).format('DD/MM/YYYY HH:mm') %></td>
                         <td><%= consulta.convenio %></td>
                         <td><%= consulta.tipoExame %></td>
-                        <td><%= consulta.dataExame %></td>
+                        <td class="data-cell" data-data="<%= consulta.dataExame %>" ><%= moment(consulta.dataExame).format('DD/MM/YYYY HH:mm') %></td>
                         <td><%= consulta.status %></td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm icones" data-bs-toggle="modal" data-bs-target="#visualizarModal">
@@ -221,6 +221,20 @@
             
             
         </div>
+        <script>
+                // manipulador de eventos para as células de data na tabela que será acionado quando uma célula for clicada.
+                document.addEventListener('DOMContentLoaded', function () {
+                var cells = document.querySelectorAll('.data-cell');
+
+                cells.forEach(function (cell) {
+                    cell.addEventListener('click', function () {
+                        var dataSelecionada = cell.getAttribute('data-data');
+                        console.log('outra data: ', dataSelecionada)
+                        filtrarConsultasPorData(dataSelecionada);
+                    });
+                });
+        });
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
         <script src="/js/exclusao.js"></script>
         <script src="/js/criacao.js"></script>
