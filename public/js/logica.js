@@ -1,4 +1,5 @@
 function abrirModalEdicao(consulta) {
+    console.log('Valor de consultas:', consulta)
     console.log('Função abrirModalEdicao chamada');
     var consulta = JSON.parse(consulta); // Converte a string JSON para objeto
     console.log('Dados do paciente:', consulta);

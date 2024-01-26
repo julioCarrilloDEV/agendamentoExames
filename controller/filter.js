@@ -9,7 +9,6 @@ async function filterConsultasPorData(req, res) {
         const timestampUnix = req.params.data;
         //const dataSelecionada = moment.unix(timestampUnix).format('DD/MM/YYYY');
         const dataSelecionada = moment.unix(timestampUnix).startOf('day'); // Ignorar a parte da hora
-        console.log('Data recebida na rota:', dataSelecionada);
         // Calcula o final do dia (23:59:59)
         const finalDoDia = moment(dataSelecionada).endOf('day');
 
@@ -22,7 +21,6 @@ async function filterConsultasPorData(req, res) {
             }
         });
 
-        console.log('Consultas encontradas por data:', consultasPorData);
         res.json(consultasPorData);
     } catch (error) {
         console.error('Erro na filtragem de consultas por data:', error);
