@@ -43,6 +43,25 @@ function filtrarConsultasPorData(dataSelecionada) {
              var tbody = document.getElementById('tabelaConsultas');
              data.forEach(consulta => {
                  var tr = document.createElement('tr');
+                 
+                // Crie um botão de edição dinamicamente
+                var botaoEdicao = document.createElement('button');
+                botaoEdicao.setAttribute('type', 'button');
+                botaoEdicao.setAttribute('class', 'btn btn-warning btn-sm icones');
+                
+
+                 consultaString = JSON.stringify(consulta);
+
+                 // Defina um atributo de dados com o JSON original
+                botaoEdicao.setAttribute('data-json', consultaString);
+
+                // Defina o evento onclick para chamar a função com o JSON armazenado no atributo de dados
+                botaoEdicao.onclick = function() {
+                    abrirModalEdicao2(JSON.parse(this.getAttribute('data-json')));
+                };
+                  // Adicione o ícone ao botão
+                  botaoEdicao.innerHTML = '<i class="bi bi-pencil"></i>';
+
                 
                  // Preencha as células da linha conforme necessário
                  tr.innerHTML = `
@@ -57,7 +76,7 @@ function filtrarConsultasPorData(dataSelecionada) {
                                     <button type="button" class="btn btn-primary btn-sm icones" data-bs-toggle="modal" data-bs-target="#visualizarModal">
                                         <i class="bi bi-eye"></i>
                                     </button>
-                                    <button type="button" class="btn btn-warning btn-sm icones" onclick="abrirModalEdicao('${JSON.stringify(consulta)}')">
+                                    <button type="button" class="btn btn-warning btn-sm icones" onclick="">
                                         <i class="bi bi-pencil"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger btn-sm icones" data-bs-toggle="modal" data-bs-target="#confirmarExclusaoModal" onclick="prepararExclusao(${consulta.id})">
@@ -65,7 +84,11 @@ function filtrarConsultasPorData(dataSelecionada) {
                                     </button>
                                  </td>
                                  `;
-                    
+                     // Adicione o botão à célula da linha
+                     var td = document.createElement('td');
+                     td.appendChild(botaoEdicao);
+                     tr.appendChild(td);
+
                  tbody.appendChild(tr);
              });
              
@@ -74,14 +97,3 @@ function filtrarConsultasPorData(dataSelecionada) {
              console.error('Erro na requisição:', error);
          });
  }
-
- /*<button type="button" class="btn btn-warning btn-sm icones" onclick="abrirModalEdicao({" id":1,"nomepaciente":"julio cesar carrillo ferreira","dataabertura":"2024-01-25t17:00:00.000z","convenio":"unimed lins","tipoexame":"tomografia","dataexame":"2024-01-31t15:00:00.000z","numguia":12345678,"status":"em análise"})"> */
-
-/* <button type="button" class="btn btn-warning btn-sm icones" onclick="abrirModalEdicao('{&quot;id&quot;:1,&quot;nomePaciente&quot;:&quot;Julio Cesar Carrillo Ferreira&quot;,&quot;dataAbertura&quot;:&quot;2024-01-25T17:00:00.000Z&quot;,&quot;convenio&quot;:&quot;Unimed Lins&quot;,&quot;tipoExame&quot;:&quot;Tomografia&quot;,&quot;dataExame&quot;:&quot;2024-01-31T15:00:00.000Z&quot;,&quot;numGuia&quot;:12345678,&quot;status&quot;:&quot;Em Análise&quot;}')"></button> */
-
-//Atualizar a Página com Resultados
-function atualizarPaginaComResultados(consultasFiltradas) {
-    // Implemente a lógica para atualizar a página com os resultados
-    // Pode ser renderizando a tabela de consultas ou qualquer outra coisa
-    console.log('Consultas filtradas:', consultasFiltradas);
-}

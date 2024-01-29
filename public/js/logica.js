@@ -6,6 +6,13 @@ function abrirModalEdicao(consulta) {
     preencherFormularioEdicao(consulta);
     abrirModal('editarModal');
 }
+function abrirModalEdicao2(consulta) {
+    console.log('Valor de consultas:', consulta)
+    console.log('Função abrirModalEdicao chamada');
+    console.log('Dados do paciente:', consulta);
+    preencherFormularioEdicao(consulta);
+    abrirModal('editarModal');
+}
 
 function preencherFormularioEdicao(consulta) {
     document.getElementById('nomePacienteEdit').value = consulta.nomePaciente;
