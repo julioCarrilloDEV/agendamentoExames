@@ -16,10 +16,10 @@ function abrirModalEdicao2(consulta) {
 
 function preencherFormularioEdicao(consulta) {
     document.getElementById('nomePacienteEdit').value = consulta.nomePaciente;
-    document.getElementById('dataAberturaEdit').value = consulta.dataAbertura;
+    document.getElementById('dataAberturaEdit').value = moment(consulta.dataAbertura).format('YYYY-MM-DDTHH:mm'); 
     document.getElementById('convenioEdit').value = consulta.convenio;
     document.getElementById('tipoExameEdit').value = consulta.tipoExame;
-    document.getElementById('dataExameEdit').value = consulta.dataExame;
+    document.getElementById('dataExameEdit').value = moment(consulta.dataExame).format('YYYY-MM-DDTHH:mm');
     document.getElementById('numGuiaEdit').value = consulta.numGuia;
     document.getElementById('statusEdit').value = consulta.status;
     document.getElementById('idEdit').value = consulta.id;

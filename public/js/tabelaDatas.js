@@ -1,5 +1,5 @@
 // Lógica para criar a tabela e preencher os próximos 7 dias
-const diasSemana = ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'];
+const diasSemana = ['DOM','SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'];
 const linhaDiasSemana = document.getElementById('linhaDiasSemana');
 
 for (let i = 0; i < 7; i++) {
@@ -59,41 +59,57 @@ function filtrarConsultasPorData(dataSelecionada) {
                 botaoEdicao.onclick = function() {
                     abrirModalEdicao2(JSON.parse(this.getAttribute('data-json')));
                 };
-                  // Adicione o ícone ao botão
-                  botaoEdicao.innerHTML = '<i class="bi bi-pencil"></i>';
+                // Adicione o ícone ao botão
+                botaoEdicao.innerHTML = '<i class="bi bi-pencil"></i>';
 
                 
-                 // Preencha as células da linha conforme necessário
-                 tr.innerHTML = `
-                                 <td>${consulta.id}</td>
-                                 <td>${consulta.nomePaciente}</td>
-                                 <td>${moment(consulta.dataAbertura).format('DD/MM/YYYY HH:mm')}</td>
-                                 <td>${consulta.convenio}</td>
-                                 <td>${consulta.tipoExame}</td>
-                                 <td>${moment(consulta.dataExame).format('DD/MM/YYYY HH:mm')}</td>
-                                 <td>${consulta.status}</td>
-                                 <td>
-                                    <button type="button" class="btn btn-primary btn-sm icones" data-bs-toggle="modal" data-bs-target="#visualizarModal">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-sm icones" onclick="">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm icones" data-bs-toggle="modal" data-bs-target="#confirmarExclusaoModal" onclick="prepararExclusao(${consulta.id})">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                 </td>
-                                 `;
-                     // Adicione o botão à célula da linha
-                     var td = document.createElement('td');
-                     td.appendChild(botaoEdicao);
-                     tr.appendChild(td);
+                
+                
+                // Preencha as células da linha conforme necessário
+                tr.innerHTML = `
+                <td>${consulta.id}</td>
+                <td>${consulta.nomePaciente}</td>
+                <td>${moment(consulta.dataAbertura).format('DD/MM/YYYY HH:mm')}</td>
+                <td>${consulta.convenio}</td>
+                <td>${consulta.tipoExame}</td>
+                <td>${moment(consulta.dataExame).format('DD/MM/YYYY HH:mm')}</td>
+                <td>${consulta.status}</td>
+                <td id="botoes">
+                    <button type="button" class="btn btn-primary btn-sm icones" data-bs-toggle="modal" data-bs-target="#visualizarModal">
+                    <i class="bi bi-eye"></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn-danger btn-sm icones" data-bs-toggle="modal" data-bs-target="#confirmarExclusaoModal" onclick="prepararExclusao(${consulta.id})">
+                    <i class="bi bi-trash"></i>
+                    </button>
+                
+                </td>
+                `;
+                
+                
+                
+                // Adicione o botão à célula da linha
+                var td = document.createElement('td');
+                td.appendChild(botaoEdicao);
+                tr.appendChild(td);
 
                  tbody.appendChild(tr);
+              /*   window.addEventListener('load', function() {
+                    console.log("FUNÇÃO CHAMADAAAAAAA")
+                    // Substitua o botão com o ID 'botao2' pelo botão de edição
+                    var botao2 = document.getElementById('botao2');
+                    var bot2 = botao2.parentNode;
+                    bot2.replaceChild(botaoEdicao, botao2);
+                });*/
              });
              
          })
          .catch(error => {
              console.error('Erro na requisição:', error);
          });
+ }
+
+
+ function trocarBotao(){
+    
  }
