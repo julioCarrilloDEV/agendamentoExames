@@ -13,3 +13,7 @@
 .icones{
     font-weight: 800;
 }
+
+.clicavel{
+    cursor: pointer;
+}
