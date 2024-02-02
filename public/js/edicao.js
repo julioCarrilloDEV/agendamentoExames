@@ -1,15 +1,9 @@
-function abrirModalEdicao(consulta) {
-    console.log('Valor de consultas:', consulta)
-    console.log('Função abrirModalEdicao chamada');
+function abrirModalEdicao(consulta) {   
     var consulta = JSON.parse(consulta); // Converte a string JSON para objeto
-    console.log('Dados do paciente:', consulta);
     preencherFormularioEdicao(consulta);
     abrirModal('editarModal');
 }
 function abrirModalEdicao2(consulta) {
-    console.log('Valor de consultas:', consulta)
-    console.log('Função abrirModalEdicao chamada');
-    console.log('Dados do paciente:', consulta);
     preencherFormularioEdicao(consulta);
     abrirModal('editarModal');
 }
@@ -27,7 +21,6 @@ function preencherFormularioEdicao(consulta) {
 
 // Função para abrir o modal por ID
 function abrirModal(modalId) {
-    console.log('Abrindo modal:', modalId);
     var modal = new bootstrap.Modal(document.getElementById(modalId));
     modal.show();
 }
@@ -41,12 +34,29 @@ function fecharModal(modalId) {
 function enviarEdicao() {
     // Obtenha os dados do formulário
     var formData = new FormData(document.getElementById('formularioEdicao'));
+    console.log('Valores do formulário enviados: ', formData)
+
+    // Formate as datas antes de enviar
+    var dataAbertura = formData.get('dataAberturaEdit');
+    var dataExame = formData.get('dataExameEdit');
+
+    console.log('Valores data de abertura: ', dataAbertura);
+    console.log('Valores data de exame: ', dataExame);
+
+ /*   if (dataAbertura) {
+        formData.set('dataAberturaEdit', moment(dataAbertura).format('YYYY-MM-DDTHH:mm'));
+    }
+
+    if (dataExame) {
+        formData.set('dataExameEdit', moment(dataExame).format('YYYY-MM-DDTHH:mm'));
+    } */
+
 
     // Converta FormData para um objeto JSON
-    var jsonData = {};
+   /* var jsonData = {};
     formData.forEach((value, key) => {
         jsonData[key] = value;
-    });
+    });*/
 
     // Obtenha o valor do campo oculto idEdit
     var consultaId = document.getElementById('idEdit').value;
@@ -60,7 +70,8 @@ function enviarEdicao() {
         headers: {
             'Content-Type': 'application/json' // Indique que estamos enviando JSON
         },
-        body: JSON.stringify(jsonData) // Converta o objeto JSON para uma string JSON
+        body: JSON.stringify(Object.fromEntries(formData))
+        //body: JSON.stringify(jsonData) // Converta o objeto JSON para uma string JSON
    })
     .then(response => response.json())
     .then(data => {

@@ -11,7 +11,7 @@ const Consultas = db.sequelize.define('consultas', {
         type: DataTypes.STRING
     },
     dataAbertura: {
-        type: DataTypes.STRING
+        type: DataTypes.DATE
     },
     convenio: {
         type: DataTypes.STRING
@@ -20,7 +20,7 @@ const Consultas = db.sequelize.define('consultas', {
         type: DataTypes.STRING
     },
     dataExame: {
-        type: DataTypes.STRING
+        type: DataTypes.DATE
     },
     numGuia: {
         type: DataTypes.INTEGER
