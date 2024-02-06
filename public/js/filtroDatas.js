@@ -13,11 +13,9 @@ for (let i = 0; i < 10; i++) {
     linhaDiasSemana.appendChild(celula);
 }
 
-
 //Evento de clique nas células 
 document.getElementById('tabelaDinamica').addEventListener('click', function (event) {
     const celulaClicada = event.target;
-
     // Verifique se a célula clicada é uma célula da tabela
     if (celulaClicada.tagName === 'TD') {
         // Obtenha a data correspondente à célula clicada
@@ -26,8 +24,6 @@ document.getElementById('tabelaDinamica').addEventListener('click', function (ev
         filtrarConsultasPorData(timestampUnix);
     }
 });
-
-
 
 //Filtrar a Lista de Consultas
 function filtrarConsultasPorData(dataSelecionada) {
@@ -49,8 +45,7 @@ function filtrarConsultasPorData(dataSelecionada) {
                 botaoEdicao.setAttribute('type', 'button');
                 botaoEdicao.setAttribute('class', 'btn btn-warning btn-sm icones');
                 
-
-                 consultaString = JSON.stringify(consulta);
+                consultaString = JSON.stringify(consulta);
 
                  // Defina um atributo de dados com o JSON original
                 botaoEdicao.setAttribute('data-json', consultaString);
@@ -61,9 +56,6 @@ function filtrarConsultasPorData(dataSelecionada) {
                 };
                 // Adicione o ícone ao botão
                 botaoEdicao.innerHTML = '<i class="bi bi-pencil"></i>';
-
-                
-                
                 
                 // Preencha as células da linha conforme necessário
                 tr.innerHTML = `
@@ -86,30 +78,15 @@ function filtrarConsultasPorData(dataSelecionada) {
                 </td>
                 `;
                 
-                
-                
-                // Adicione o botão à célula da linha
-                var td = document.createElement('td');
-                td.appendChild(botaoEdicao);
-                tr.appendChild(td);
-
-                 tbody.appendChild(tr);
-              /*   window.addEventListener('load', function() {
-                    console.log("FUNÇÃO CHAMADAAAAAAA")
-                    // Substitua o botão com o ID 'botao2' pelo botão de edição
-                    var botao2 = document.getElementById('botao2');
-                    var bot2 = botao2.parentNode;
-                    bot2.replaceChild(botaoEdicao, botao2);
-                });*/
+                // Selecione a célula onde deseja inserir o botão de edição
+                var botoesCell = tr.querySelector('#botoes');
+                // Adicione o botão de edição à célula
+                botoesCell.appendChild(botaoEdicao);
+                tbody.appendChild(tr);            
              });
              
          })
          .catch(error => {
              console.error('Erro na requisição:', error);
          });
- }
-
-
- function trocarBotao(){
-    
  }
