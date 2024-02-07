@@ -47,7 +47,7 @@
             </div>
         </div>
         
-        <table class="table table-striped mt-5 text-center">
+        <table class="table  mt-5 text-center">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">ID</th>
@@ -69,9 +69,9 @@
                         <td><%= consulta.convenio %></td>
                         <td><%= consulta.tipoExame %></td>
                         <td class="data-cell" data-data="<%= consulta.dataExame %>" ><%= moment(consulta.dataExame).format('DD/MM/YYYY HH:mm') %></td>
-                        <td><%= consulta.status %></td>
+                        <td class="linha-status"><%= consulta.status %></td>
                         <td id="botoes">
-                            <button type="button" class="btn btn-success btn-sm check-in" onclick="realizarCheckIn(this)">
+                            <button type="button" class="btn btn-success btn-sm check-in" onclick="checkIn(' <%= consulta.id %>')">
                                 <i class="bi bi-check2-square"></i>
                             </button>
                             <button type="button" class="btn btn-primary btn-sm icones"  onclick="abrirModalVisu('<%= JSON.stringify(consulta) %>')">
@@ -279,6 +279,23 @@
             
         </div>
         <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Seleciona todas as linhas da tabela
+                    var linhasStatus = document.querySelectorAll(".linha-status");
+
+                    // Itera sobre cada linha
+                    linhasStatus.forEach(function(linha) {
+                        var linhaGeral = linha.parentNode;
+                        // Verifica se o status da linha é "Aguardando"
+                        if (linha.innerText.includes("Aguardando")) {
+                            // Altera a cor de fundo da linha para verde
+                            linhaGeral.classList.add("table-success");
+                        }
+                    });
+                });
+    
+
+
                 function recarregarPag(){
                     window.location.reload();
                 }
@@ -297,6 +314,7 @@
         });
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+        <script src="/js/check-in.js"></script>
         <script src="/js/exclusao.js"></script>
         <script src="/js/visualizar.js"></script>
         <script src="/js/criacao.js"></script>
