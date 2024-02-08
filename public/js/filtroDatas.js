@@ -13,11 +13,23 @@ for (let i = 0; i < 10; i++) {
     linhaDiasSemana.appendChild(celula);
 }
 
+// Declare uma variável para armazenar a célula clicada anteriormente
+let celulaAnterior = null;
 //Evento de clique nas células 
 document.getElementById('tabelaDinamica').addEventListener('click', function (event) {
     const celulaClicada = event.target;
-    // Verifique se a célula clicada é uma célula da tabela
-    if (celulaClicada.tagName === 'TD') {
+     // Verifique se a célula clicada é uma célula da tabela
+     if (celulaClicada.tagName === 'TD') {
+        // Remove a classe de destaque da célula anterior, se existir
+        if (celulaAnterior) {
+            celulaAnterior.classList.remove('bg-dark');
+            celulaAnterior.classList.add('bg-secondary');
+        }     
+        // Adicione a classe de destaque à célula clicada
+        celulaClicada.classList.remove('bg-secondary');
+        celulaClicada.classList.add('bg-dark');
+        // Armazene a referência para a célula clicada atualmente
+        celulaAnterior = celulaClicada;
         // Obtenha a data correspondente à célula clicada
         const dataClicada = moment().add(celulaClicada.cellIndex, 'days');
         const timestampUnix = dataClicada.unix();  // Obtém o timestamp Unix        
@@ -57,7 +69,7 @@ function filtrarConsultasPorData(dataSelecionada) {
                 tr.innerHTML = `
                 <td>${consulta.id}</td>
                 <td>${consulta.nomePaciente}</td>
-                <td>${moment(consulta.dataAbertura).format('DD/MM/YYYY HH:mm')}</td>
+                <!-- <td>${moment(consulta.dataAbertura).format('DD/MM/YYYY HH:mm')}</td> -->
                 <td>${consulta.convenio}</td>
                 <td>${consulta.tipoExame}</td>
                 <td>${moment(consulta.dataExame).format('DD/MM/YYYY HH:mm')}</td>
@@ -97,12 +109,13 @@ function filtrarConsultasPorData(dataSelecionada) {
     linhasStatus.forEach(function(linha) {
         var linhaGeral = linha.parentNode;
         // Verifica se o status da linha é "Aguardando"
-        if (linha.innerText.includes("Aguardando")) {
-            // Remove todas as classes de cor de fundo
-            linhaGeral.classList.remove("table-success"); // Remova qualquer cor de fundo definida anteriormente
+        if (linha.innerText.includes("Aguardando")) { 
             // Adiciona a classe de cor de fundo
             linhaGeral.classList.add("table-success"); // Adicione a classe para a cor de fundo verde
-        } else {
+        }else if(linha.innerText.includes("Finalizado")){
+            linhaGeral.classList.add("table-secondary");
+            linhaGeral.classList.add("opacity-50");
+        }else {
             // Se não estiver aguardando, remova a classe de cor de fundo
             linhaGeral.classList.remove("table-success");
         }
