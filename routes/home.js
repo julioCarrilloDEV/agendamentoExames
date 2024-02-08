@@ -7,6 +7,7 @@ let remove = require('../controller/remove');
 let update = require('../controller/update');
 let filter = require('../controller/filter');
 let checkin = require('../controller/checkin');
+let finalizar = require('../controller/finalizar');
 
 //rota
 router.get('/', find)
@@ -15,6 +16,8 @@ router.delete('/:id', remove)
 router.put('/editar/:id', update)
 router.get('/consultas/:data', filter)
 router.put('/checkin/:id', checkin)
+router.put('/finalizar/:id', finalizar)
+
 
 router.get('/', (req, res) =>{
     res.render('home', {

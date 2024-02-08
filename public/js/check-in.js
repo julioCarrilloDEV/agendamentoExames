@@ -19,6 +19,3 @@ function checkIn(consultaId) {
         console.error('Erro ao realizar check-in:', error);
     });
 }
-
-
-
