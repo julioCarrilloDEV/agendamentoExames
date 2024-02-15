@@ -14,18 +14,8 @@
         <div class="container mt-2 px-3">
             
         <nav class="nav align-items-center justify-content-between bg-dark border-bottom">
-            <div class="nav-item align-self-center dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    Botão dropdown
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Alguma ação</a>
-                    <a class="dropdown-item" href="#">Outra ação</a>
-                    <a class="dropdown-item" href="#">Alguma coisa aqui</a>
-                </div>
-            </div>
-            <div class="nav-item align-self-center text-white" id="ag">Agendamento de Exames: Tomografia</div>
-            <div class="nav-item align-self-center clicavel" onclick="recarregarPag()">              
+            <div class="nav-item align-self-center text-white ms-4" id="ag">Agendamento de Exames: Tomografia</div>
+            <div class="nav-item align-self-center clicavel m-1" onclick="recarregarPag()">              
                 <img src="/img/logo2.png" alt="Logo do hospital unimed de lins">
             </div>
         </nav>
@@ -284,11 +274,7 @@
         </div>
         <script>
                 document.addEventListener("DOMContentLoaded", function() {
-                    // Selecione a tabela e habilite a ordenação com Sortable.js
-                   new Sortable(document.getElementById('tabelaConsultasOrd'), {
-                       // Configuração para ordenar com base na data do exame
-                       dataIdAttr: 'data-data-exame'
-                   });
+
                     // Seleciona todas as linhas da tabela
                     var linhasStatus = document.querySelectorAll(".linha-status");
 
@@ -300,8 +286,9 @@
                             // Altera a cor de fundo da linha para verde
                             linhaGeral.classList.add("table-success");
                         }else if (linha.innerText.includes("Finalizado")){
-                            linhaGeral.classList.add("table-secondary");
-                            linhaGeral.classList.add("opacity-50");
+                            /* linhaGeral.classList.add("table-secondary");
+                            linhaGeral.classList.add("opacity-50"); */
+                            linhaGeral.style.display = "none";
                         }
                     });
                 });

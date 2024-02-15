@@ -113,8 +113,9 @@ function filtrarConsultasPorData(dataSelecionada) {
             // Adiciona a classe de cor de fundo
             linhaGeral.classList.add("table-success"); // Adicione a classe para a cor de fundo verde
         }else if(linha.innerText.includes("Finalizado")){
-            linhaGeral.classList.add("table-secondary");
-            linhaGeral.classList.add("opacity-50");
+            /* linhaGeral.classList.add("table-secondary");
+            linhaGeral.classList.add("opacity-50");*/
+            linhaGeral.style.display = "none";
         }else {
             // Se não estiver aguardando, remova a classe de cor de fundo
             linhaGeral.classList.remove("table-success");
