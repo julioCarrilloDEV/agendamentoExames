@@ -110,11 +110,20 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="convenio" class="form-label">Convênio</label>
-                                    <input type="text" class="form-control" id="convenio" name="convenio" required>
+                                    <select class="form-select" id="convenio" name="convenio" required>
+                                        <option selected disabled>Selecione um convênio</option>
+                                        <option value="Unimed Lins">Unimed Lins</option>
+                                        <option value="Unimed - Outras">Unimed - Outras</option>
+                                        <option value="Particular">Particular</option>
+                                        <option value="Fusex">Fusex</option>
+                                        <option value="Cabesp">Cabesp</option>
+                                        <option value="Outros - Não especificado">Outros - Não especificado</option>
+                                    </select>
                                 </div>
+                                
                                 <div class="mb-3">
                                     <label for="tipoExame" class="form-label">Tipo de Exame</label>
-                                    <input type="text" class="form-control" id="tipoExame" name="tipoExame" required>
+                                    <input type="text" class="form-control" id="tipoExame" name="tipoExame" required readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="dataExame" class="form-label">Data do Exame</label>
@@ -126,7 +135,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
-                                    <input type="text" class="form-control" id="status" name="status" required>
+                                    <input type="text" class="form-control" id="status" name="status" required readonly>
                                 </div>
                                 
                                 <!-- Botões do formulário -->
@@ -221,7 +230,15 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="convenio" class="form-label">Convênio</label>
-                                    <input type="text" class="form-control" id="convenioEdit" name="convenio" required>
+                                    <select class="form-select" id="convenioEdit" name="convenio" required>
+                                        <option selected disabled>Selecione um convênio</option>
+                                        <option value="Unimed Lins">Unimed Lins</option>
+                                        <option value="Unimed - Outras">Unimed - Outras</option>
+                                        <option value="Particular">Particular</option>
+                                        <option value="Fusex">Fusex</option>
+                                        <option value="Cabesp">Cabesp</option>
+                                        <option value="Outros - Não especificado">Outros - Não especificado</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tipoExame" class="form-label">Tipo de Exame</label>
@@ -237,7 +254,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
-                                    <input type="text" class="form-control" id="statusEdit" name="status" required>
+                                    <input class="form-control" list="datalistOptions" id="statusEdit" name="status">
+                                    <datalist id="datalistOptions">
+                                    <option value="Em aberto">
+                                    <option value="Aguardando">
+                                    </datalist>
                                 </div>
                                 <!-- Campo Oculto para Armazenar o ID da Consulta -->
                                 <input type="hidden" id="idEdit" name="id">

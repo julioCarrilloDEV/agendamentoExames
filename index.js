@@ -21,7 +21,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.set('views', path.join(__dirname, 'views'))
-//app.use(methodOverride('_method'))
 //Caregando meu sequelize
 require('./model/index')
 
