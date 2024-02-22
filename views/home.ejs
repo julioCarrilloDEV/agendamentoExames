@@ -79,14 +79,18 @@
                 <% }); %>
             </tbody>
         </table>
-            <!-- Modal de Adição de nova consulta -->
-            <div class="row mt-3">
-                <div class="col text-end">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#novoCadastro">
-                        <i class="bi bi-plus"></i>Adicionar Novo Cadastro
-                    </button>
-                </div>
+        <div class="row mt-3">
+            <div class="col text-end">
+                <a href="/finalizadas" class="btn btn-secondary">
+                    <i class="bi bi-clipboard-check"></i> Exames Finalizados
+                </a>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#novoCadastro">
+                    <i class="bi bi-plus"></i>Adicionar Novo Cadastro
+                </button>
             </div>
+        </div>
+        
+        <!-- Modal de Adição de nova consulta -->
             <div class="modal fade" id="novoCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -307,8 +311,6 @@
                             // Altera a cor de fundo da linha para verde
                             linhaGeral.classList.add("table-success");
                         }else if (linha.innerText.includes("Finalizado")){
-                            /* linhaGeral.classList.add("table-secondary");
-                            linhaGeral.classList.add("opacity-50"); */
                             linhaGeral.style.display = "none";
                         }
                     });

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Agendamento de exames</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container mt-2 px-3">
+            
+        <nav class="nav align-items-center justify-content-between bg-dark border-bottom">
+            <div class="nav-item align-self-center text-white ms-4" id="ag">Agendamento de Exames: Tomografia</div>
+            <div class="nav-item align-self-center clicavel m-1" onclick="recarregarPag()">              
+                <img src="/img/logo2.png" alt="Logo do hospital unimed de lins">
+            </div>
+        </nav>
+        <div class="row m-1">
+            <a href="/" class="btn btn-secondary col-1">
+                <i class="bi bi-arrow-left"></i> Voltar
+            </a>
+        </div>
+        <div class="row mt-3 align-items-center ">
+            <div class="col">
+                <p class="mb-0 align-self-center linha1">Lista de Exames</p>
+            </div>
+            <div class="col d-flex align-items-end">
+                <p class="mb-0 me-2 align-self-center linha2">Procurar:</p>
+                <input type="text" class="form-control align-self-center pesquisa" placeholder="Digite aqui..." oninput="pesquisar(this.value)">
+            </div>
+        </div>
+
+
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+        <script src="/js/check-in.js"></script>
+        <script src="/js/finalizar.js"></script>
+        <script src="/js/exclusao.js"></script>
+        <script src="/js/visualizar.js"></script>
+        <script src="/js/criacao.js"></script>
+        <script src="/js/edicao.js"></script>
+        <script src="/js/filtroDatas.js"></script>
+        <script src="/js/pesquisa.js"></script>
+</body>
+</html>

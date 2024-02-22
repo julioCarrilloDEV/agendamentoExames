@@ -18,7 +18,6 @@ router.get('/consultas/:data', filter)
 router.put('/checkin/:id', checkin)
 router.put('/finalizar/:id', finalizar)
 
-
 router.get('/', (req, res) =>{
     res.render('home', {
         message: "hellow"
@@ -26,14 +25,16 @@ router.get('/', (req, res) =>{
 
 })
 
+router.get('/finalizadas', (req, res) => {
+    // Renderize a página finalizadas.ejs
+    res.render('finalizadas');
+});
+
 //:name (parametro)
 router.get('/requests/:name', (req, res) =>{
     //req.params captura os parametros enviados. 
     console.log(req.params.name)
 })
 
-// router.post('/', (req, res) => {
-//     res.json(req.body)
-// })
 //exporta o módulo
 module.exports = router
