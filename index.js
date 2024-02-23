@@ -12,8 +12,6 @@ const port = 4000;
 
 app.set('views', path.join(__dirname, 'views'));
 
-// require('moment/locale/pt-br');
-// moment.locale('pt-br');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
@@ -21,6 +19,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.set('views', path.join(__dirname, 'views'))
+
 //Caregando meu sequelize
 require('./model/index')
 
