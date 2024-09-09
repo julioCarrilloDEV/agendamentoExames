@@ -53,11 +53,11 @@
         <table id="tabelaConsultasOrd" class="table sortable mt-5 text-center">
             <thead class="table">
                 <tr>
-                    <th scope="col">ID</th>
+                    <!-- <th scope="col">ID</th> -->
                     <th scope="col">Nome do Paciente</th>
-                    <th scope="col">Convênio</th>
-                    <th scope="col">Tipo de Exame</th>
                     <th scope="col">Data do Exame</th>
+                    <th scope="col">Tipo de Exame</th>
+                    <th scope="col">Convênio</th>
                     <th scope="col">Status</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -65,11 +65,11 @@
             <tbody id="tabelaConsultas">
                 <% consultas.forEach(consulta => { %>
                     <tr id="<%= consulta.id %>" data-data-exame="<%= moment(consulta.dataExame).format('YYYYMMDDHHmmss') %>">
-                        <td><%= consulta.id %></td>
+                        <!-- <td><%= consulta.id %></td> -->
                         <td><%= consulta.nomePaciente %></td>
-                        <td><%= consulta.convenio %></td>
-                        <td><%= consulta.tipoExame %></td>
                         <td class="data-cell" data-data="<%= consulta.dataExame %>" ><%= moment(consulta.dataExame).format('DD/MM/YYYY HH:mm') %></td>
+                        <td><%= consulta.tipoExame %></td>
+                        <td><%= consulta.convenio %></td>
                         <td class="linha-status"><%= consulta.status %></td>
                         <td id="botoes">
                             <button type="button" class="btn btn-primary btn-sm icones"  onclick="abrirModalVisu('<%= JSON.stringify(consulta) %>')">
@@ -109,6 +109,10 @@
                                 <div class="mb-3">
                                     <label for="nomePaciente" class="form-label">Nome do Paciente:</label>
                                     <input type="text" class="form-control" id="nomePacienteVisu" name="nomePaciente"  readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefone" class="form-label">Telefone:</label>
+                                    <input type="text" class="form-control" id="telefoneVisu" name="telefone"  readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="dataAbertura" class="form-label">Data da Abertura</label>
@@ -165,6 +169,10 @@
                                 <div class="mb-3">
                                     <label for="nomePaciente" class="form-label">Nome do Paciente:</label>
                                     <input type="text" class="form-control" id="nomePacienteEdit" name="nomePaciente" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefone" class="form-label">Telefone:</label>
+                                    <input type="text" class="form-control" id="telefoneEdit" name="telefone" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="dataAbertura" class="form-label">Data da Abertura</label>
@@ -251,13 +259,13 @@
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
         <script src="/js/exclusao.js"></script>
         <script src="/js/abrirExame.js"></script>
         <script src="/js/visualizar.js"></script>
         <script src="/js/edicao.js"></script>
         <script src="/js/filtroDatas.js"></script>
         <script src="/js/pesquisa.js"></script>
-        <script src="/js/gerarRelatorio.js"></script>
+        <!-- <script src="/js/gerarRelatorio.js"></script> -->
 </body>
 </html>

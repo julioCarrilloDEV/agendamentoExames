@@ -67,12 +67,11 @@ function filtrarConsultasPorData(dataSelecionada) {
                 
                 // Preencha as células da linha conforme necessário
                 tr.innerHTML = `
-                <td>${consulta.id}</td>
+                <!-- <td>${consulta.id}</td> -->
                 <td>${consulta.nomePaciente}</td>
-                <!-- <td>${moment(consulta.dataAbertura).format('DD/MM/YYYY HH:mm')}</td> -->
-                <td>${consulta.convenio}</td>
-                <td>${consulta.tipoExame}</td>
                 <td>${moment(consulta.dataExame).format('DD/MM/YYYY HH:mm')}</td>
+                <td>${consulta.tipoExame}</td>
+                <td>${consulta.convenio}</td>
                 <td class="linha-status">${consulta.status}</td>
                 <td id="botoes">
                     <button type="button" class="btn btn-success btn-sm check-in" onclick="checkIn(${consulta.id})">

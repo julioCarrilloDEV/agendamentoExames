@@ -9,7 +9,9 @@ module.exports = (req, res) => {
 
     const { dataInicial, dataFinal } = '';
     Consultas
-        .findAll()
+        .findAll({
+            order: [['dataExame', 'ASC']]
+        })
         .then((consultas) => {
             
             res.render('finalizadas', {

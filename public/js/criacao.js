@@ -1,7 +1,18 @@
 function enviarFormularioAdd() {
-    // Obtenha os dados do formulário
-    var formData = new FormData(document.getElementById('formularioAdd'));
-
+    // Obtenha o formulário
+    var formulario = document.getElementById('formularioAdd');
+    
+    // Verifique se o formulário é válido
+    if (!formulario.checkValidity()) {
+        formulario.reportValidity(); // Mostra mensagens de erro
+        return; // Impede o envio se o formulário não for válido
+    }
+    
+    // Se o formulário for válido, proceda com o envio
+    var formData = new FormData(formulario);
+    // Adicione o valor da checkbox "Sedação" manualmente ao formData, visto que ele não pega corretamente o valor de checkbox
+    var sedacao = document.getElementById('sedacao').checked ? 1 : 0;
+    formData.append('sedacao', sedacao);
     // Enviar uma requisição POST usando AJAX
     fetch('/', {
         method: 'POST',

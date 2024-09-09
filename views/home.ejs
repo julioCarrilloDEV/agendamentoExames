@@ -41,12 +41,11 @@
         <table id="tabelaConsultasOrd" class="table sortable mt-5 text-center">
             <thead class="table">
                 <tr>
-                    <th scope="col">ID</th>
+                    <!-- <th scope="col">ID</th> -->
                     <th scope="col">Nome do Paciente</th>
-                    <!-- <th scope="col">Data da Abertura</th> -->
-                    <th scope="col">Convênio</th>
-                    <th scope="col">Tipo de Exame</th>
                     <th scope="col">Data do Exame</th>
+                    <th scope="col">Tipo de Exame</th>
+                    <th scope="col">Convênio</th>
                     <th scope="col">Status</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -54,12 +53,11 @@
             <tbody id="tabelaConsultas">
                 <% consultas.forEach(consulta => { %>
                     <tr id="<%= consulta.id %>" data-data-exame="<%= moment(consulta.dataExame).format('YYYYMMDDHHmmss') %>">
-                        <td><%= consulta.id %></td>
+                        <!-- <td><%= consulta.id %></td> -->
                         <td><%= consulta.nomePaciente %></td>
-                        <!-- <td><%= moment(consulta.dataAbertura).format('DD/MM/YYYY HH:mm') %></td> -->
-                        <td><%= consulta.convenio %></td>
-                        <td><%= consulta.tipoExame %></td>
                         <td class="data-cell" data-data="<%= consulta.dataExame %>" ><%= moment(consulta.dataExame).format('DD/MM/YYYY HH:mm') %></td>
+                        <td><%= consulta.tipoExame %></td>
+                        <td><%= consulta.convenio %></td>
                         <td class="linha-status"><%= consulta.status %></td>
                         <td id="botoes">
                             <button type="button" class="btn btn-success btn-sm check-in" onclick="checkIn(' <%= consulta.id %>')">
@@ -68,9 +66,6 @@
                             <button type="button" class="btn btn-primary btn-sm icones"  onclick="abrirModalVisu('<%= JSON.stringify(consulta) %>')">
                                 <i class="bi bi-eye"></i>
                             </button>
-                            <!-- <button type="button" class="btn btn-danger btn-sm icones" data-bs-toggle="modal" data-bs-target="#confirmarExclusaoModal" onclick="prepararExclusao('<%= consulta.id %>')">
-                                <i class="bi bi-trash"></i>
-                            </button> -->
                             <button type="button" class="btn btn-warning btn-sm icones" onclick="abrirModalEdicao('<%= JSON.stringify(consulta) %>')">
                                 <i class="bi bi-pencil"></i>
                             </button>
@@ -108,6 +103,10 @@
                                     <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" required>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="telefone" class="form-label">Telefone</label>
+                                    <input type="text" class="form-control" id="telefone" name="telefone" required maxlength="15">
+                                </div>
+                                <div class="mb-3">
                                     <label for="dataAbertura" class="form-label">Data da Abertura</label>
                                     <input type="datetime-local" class="form-control" id="dataAbertura" name="dataAbertura" required>
                                 </div>
@@ -125,7 +124,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="tipoExame" class="form-label">Tipo de Exame</label>
-                                    <input type="text" class="form-control" id="tipoExame" name="tipoExame" required readonly>
+                                    <input type="text" class="form-control" id="tipoExame" name="tipoExame" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="dataExame" class="form-label">Data do Exame</label>
@@ -134,6 +133,12 @@
                                 <div class="mb-3">
                                     <label for="numGuia" class="form-label">Número da Guia</label>
                                     <input type="text" class="form-control" id="numGuia" name="numGuia" required>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="1" id="sedacao" name="sedacao">
+                                    <label class="form-check-label" for="sedacao">
+                                      <b>Sedação</b>
+                                    </label>
                                 </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
@@ -171,6 +176,10 @@
                                     <input type="text" class="form-control" id="nomePacienteVisu" name="nomePaciente"  readonly>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="telefone" class="form-label">Telefone:</label>
+                                    <input type="text" class="form-control" id="telefoneVisu" name="telefone"  readonly>
+                                </div>
+                                <div class="mb-3">
                                     <label for="dataAbertura" class="form-label">Data da Abertura</label>
                                     <input type="datetime-local" class="form-control" id="dataAberturaVisu" name="dataAbertura" readonly>
                                 </div>
@@ -190,6 +199,12 @@
                                     <label for="numGuia" class="form-label">Número da Guia</label>
                                     <input type="text" class="form-control" id="numGuiaVisu" name="numGuia" readonly>
                                 </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="1" id="sedacaoVisu" name="sedacao" readonly>
+                                    <label class="form-check-label" for="sedacao">
+                                      <b>Sedação</b>
+                                    </label>
+                                </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
                                     <input type="text" class="form-control" id="statusVisu" name="status" readonly>
@@ -208,7 +223,7 @@
             </div>
 
 
-            <!-- Modal de ediçaõ dos dados -->
+            <!-- Modal de edição dos dados -->
             <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -225,6 +240,10 @@
                                 <div class="mb-3">
                                     <label for="nomePaciente" class="form-label">Nome do Paciente:</label>
                                     <input type="text" class="form-control" id="nomePacienteEdit" name="nomePaciente" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefone" class="form-label">Telefone:</label>
+                                    <input type="text" class="form-control" id="telefoneEdit" name="telefone" required maxlength="15">
                                 </div>
                                 <div class="mb-3">
                                     <label for="dataAbertura" class="form-label">Data da Abertura</label>
@@ -253,6 +272,12 @@
                                 <div class="mb-3">
                                     <label for="numGuia" class="form-label">Número da Guia</label>
                                     <input type="text" class="form-control" id="numGuiaEdit" name="numGuia" required>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="1" id="sedacaoEdit" name="sedacao">
+                                    <label class="form-check-label" for="sedacao">
+                                      <b>Sedação</b>
+                                    </label>
                                 </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>

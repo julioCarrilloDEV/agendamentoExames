@@ -10,11 +10,15 @@ const Consultas = db.sequelize.define('consultas', {
     nomePaciente: {
         type: DataTypes.STRING
     },
+    telefone: {
+        type: DataTypes.STRING
+    },
     dataAbertura: {
         type: DataTypes.DATE
     },
     convenio: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue: 'Outros - Não especificado'
     },
     tipoExame: {
         type: DataTypes.STRING
@@ -27,6 +31,11 @@ const Consultas = db.sequelize.define('consultas', {
     },
     status: {
         type: DataTypes.STRING
+    },
+    sedacao: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
 });
 

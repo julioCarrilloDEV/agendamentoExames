@@ -12,6 +12,7 @@ function abrirModalVisu2(consulta) {
 
 function preencherFormularioVisu(consulta) {
     document.getElementById('nomePacienteVisu').value = consulta.nomePaciente;
+    document.getElementById('telefoneVisu').value = consulta.telefone;
     document.getElementById('dataAberturaVisu').value = moment(consulta.dataAbertura).format('YYYY-MM-DDTHH:mm'); 
     document.getElementById('convenioVisu').value = consulta.convenio;
     document.getElementById('tipoExameVisu').value = consulta.tipoExame;
