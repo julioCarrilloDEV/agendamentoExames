@@ -52,7 +52,7 @@
             </thead>
             <tbody id="tabelaConsultas">
                 <% consultas.forEach(consulta => { %>
-                    <tr id="<%= consulta.id %>" data-data-exame="<%= moment(consulta.dataExame).format('YYYYMMDDHHmmss') %>">
+                    <tr id="<%= consulta.id %>" data-data-exame="<%= moment(consulta.dataExame).format('YYYYMMDDHHmmss') %>" data-sedacao="<%= consulta.sedacao %>">
                         <!-- <td><%= consulta.id %></td> -->
                         <td><%= consulta.nomePaciente %></td>
                         <td class="data-cell" data-data="<%= consulta.dataExame %>" ><%= moment(consulta.dataExame).format('DD/MM/YYYY HH:mm') %></td>
@@ -200,7 +200,7 @@
                                     <input type="text" class="form-control" id="numGuiaVisu" name="numGuia" readonly>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="1" id="sedacaoVisu" name="sedacao" readonly>
+                                    <input class="form-check-input" type="checkbox" value="1" id="sedacaoVisu" name="sedacao" disabled>
                                     <label class="form-check-label" for="sedacao">
                                       <b>Sedação</b>
                                     </label>
@@ -329,14 +329,21 @@
                     // Itera sobre cada linha
                     linhasStatus.forEach(function(linha) {
                         var linhaGeral = linha.parentNode;
+
+                        var sedacao = linhaGeral.getAttribute('data-sedacao');
+
                         // Verifica se o status da linha é "Aguardando"
                         if (linha.innerText.includes("Aguardando")) {
                             // Altera a cor de fundo da linha para verde
                             linhaGeral.classList.add("table-success");
                         }else if (linha.innerText.includes("Finalizado")){
-                            /* linhaGeral.classList.add("table-secondary");
-                            linhaGeral.classList.add("opacity-50"); */
                             linhaGeral.style.display = "none";
+                        }
+
+                        if (sedacao === "true") {
+                            linhaGeral.classList.add("table-warning"); 
+                        } else {
+                            linhaGeral.classList.remove("table-warning"); 
                         }
                     });
                 });

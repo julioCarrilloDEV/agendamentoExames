@@ -17,7 +17,7 @@ function preencherFormularioEdicao(consulta) {
     document.getElementById('dataExameEdit').value = moment(consulta.dataExame).format('YYYY-MM-DDTHH:mm');
     document.getElementById('numGuiaEdit').value = consulta.numGuia;
     document.getElementById('statusEdit').value = consulta.status;
-    document.getElementById('sedacaoEdit').checked = consulta.sedacao === 1; // Verifica se 'sedacao' é 1, e marca o checkbox
+    document.getElementById('sedacaoEdit').checked = consulta.sedacao === true; // Verifica se 'sedacao' é true, e marca o checkbox
     document.getElementById('idEdit').value = consulta.id;
 }
 
@@ -34,9 +34,17 @@ function fecharModal(modalId) {
 }
 
 function enviarEdicao() {
-    // Obtenha os dados do formulário
-    var formData = new FormData(document.getElementById('formularioEdicao'));
+    
+    var formularioEdit = document.getElementById('formularioEdicao');
 
+    // Verifique se o formulário é válido
+    if (!formularioEdit.checkValidity()) {
+        formularioEdit.reportValidity(); // Mostra mensagens de erro
+        return; // Impede o envio se o formulário não for válido
+    }
+
+    // Se o formulário for válido, proceda com o envio
+    var formData = new FormData(formularioEdit);
     // Adicione o valor da checkbox "Sedação" manualmente ao formData, visto que ele não pega corretamente o valor de checkbox
     var sedacao = document.getElementById('sedacaoEdit').checked ? 1 : 0;
     formData.append('sedacao', sedacao);

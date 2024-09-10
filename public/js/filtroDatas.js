@@ -51,6 +51,8 @@ function filtrarConsultasPorData(dataSelecionada) {
              var tbody = document.getElementById('tabelaConsultas');
              data.forEach(consulta => {
                  var tr = document.createElement('tr'); 
+
+                tr.setAttribute('data-sedacao', consulta.sedacao);
                 // Crie um botão de edição dinamicamente
                 var botaoEdicao = document.createElement('button');
                 botaoEdicao.setAttribute('type', 'button');
@@ -107,17 +109,24 @@ function filtrarConsultasPorData(dataSelecionada) {
     // Itera sobre cada linha
     linhasStatus.forEach(function(linha) {
         var linhaGeral = linha.parentNode;
+
+        var sedacao = linhaGeral.getAttribute('data-sedacao');
         // Verifica se o status da linha é "Aguardando"
         if (linha.innerText.includes("Aguardando")) { 
             // Adiciona a classe de cor de fundo
-            linhaGeral.classList.add("table-success"); // Adicione a classe para a cor de fundo verde
+            linhaGeral.classList.add("table-success"); 
         }else if(linha.innerText.includes("Finalizado")){
-            /* linhaGeral.classList.add("table-secondary");
-            linhaGeral.classList.add("opacity-50");*/
             linhaGeral.style.display = "none";
         }else {
-            // Se não estiver aguardando, remova a classe de cor de fundo
             linhaGeral.classList.remove("table-success");
         }
+
+        // Inserir novo código aqui
+        if (sedacao === "true") {
+            linhaGeral.classList.add("table-warning"); // Adiciona a classe para a cor de fundo vermelho
+        } else {
+            linhaGeral.classList.remove("table-warning"); // Remove a cor de fundo vermelho caso não haja sedação
+        }
+
     });
 }

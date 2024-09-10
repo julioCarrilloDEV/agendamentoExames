@@ -19,6 +19,7 @@ function preencherFormularioVisu(consulta) {
     document.getElementById('dataExameVisu').value = moment(consulta.dataExame).format('YYYY-MM-DDTHH:mm');
     document.getElementById('numGuiaVisu').value = consulta.numGuia;
     document.getElementById('statusVisu').value = consulta.status;
+    document.getElementById('sedacaoVisu').checked = consulta.sedacao === true; // Verifica se 'sedacao' é true, e marca o checkbox
     document.getElementById('idVisu').value = consulta.id;
 }
 
